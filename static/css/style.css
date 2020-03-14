@@ -32,3 +32,6 @@
   color: rgb(59,0,0);
 }
 
+.carousel-item{
+  display: none;
+}
