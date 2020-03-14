@@ -1,0 +1,34 @@
+.gradient {
+  background: linear-gradient(120deg,#000000,#4b0000);
+  color: #fff;
+}
+
+.nav-logo {
+  height: 60px;
+  width: 60px;
+}
+
+.navbar-expand-lg .navbar-nav .dropdown-menu {
+}
+
+.menu {
+  background-color: #250000;
+}
+
+.dropdown-item.text-white.menu-item:hover {
+  background-color: rgb(66,0,0);
+}
+
+.btn.btn-block.shadow-none.gradient:hover {
+  color: #ffffff;
+}
+
+.footer-logo {
+  height: 120px;
+  width: 120px;
+}
+
+.active {
+  color: rgb(59,0,0);
+}
+
