@@ -31,13 +31,35 @@ class Article(models.Model):
 		('event', 'Event'),
 		)
 
-	title = models.CharField(max_length=250)
-	slug = models.SlugField(max_length=250, unique_for_date='publish')
-	author = models.ForeignKey(User,on_delete=models.CASCADE, related_name='posted')
-	image = models.ImageField(
-		blank=True,
-		verbose_name=u"Баннер",
-		null=True)
+	title = models.CharField(max_length=250,
+							verbose_name=u'Название')
+	description = models.CharField(max_length=1000, 
+									blank=True,
+									verbose_name=u'Краткое описание',
+									null=True)
+	eventDate = models.DateField(default=timezone.now,
+								verbose_name=u'Дата события')
+	city = models.CharField(max_length=200,
+							verbose_name='Город',
+							blank=True,
+							null=True)
+	placement = models.CharField(max_length=200,
+								verbose_name=u'Место проведения',
+								blank=True,
+								null=True)
+	eventTime = models.TimeField(default=timezone.now,
+								verbose_name=u'Время Начала')
+	slug = models.SlugField(max_length=250,
+							unique_for_date='publish',
+							verbose_name=u'Ссылка')
+	author = models.ForeignKey(User,
+								on_delete=models.CASCADE, 
+								related_name='posted',
+								default=1,
+								verbose_name=u'Автор')
+	image = models.ImageField(blank=True,
+								verbose_name=u"Баннер",
+								null=True)
 	image_50_50 =ImageSpecField([Adjust(contrast=1.2, sharpness=1.1),
             					ResizeToFill(50, 50)], source='image',
             					format='JPEG', options={'quality': 90})
@@ -50,14 +72,21 @@ class Article(models.Model):
 	image_800_600 =ImageSpecField([Adjust(contrast=1.2, sharpness=1.1),
         						ResizeToFit(800, 600)], source='image',
         						format='JPEG', options={'quality': 90})
-	body = RichTextUploadingField()
-	publish = models.DateTimeField(default = timezone.now)
+	body = RichTextUploadingField(verbose_name=u'Текст статьи')
+	publish = models.DateTimeField(default = timezone.now,
+									verbose_name=u'Дата публикации')
 	situation = models.FileField(upload_to='uploads/files/',
 								blank=True,
 								verbose_name=u"Файл",
 								null=True)
-	type = models.CharField(max_length=10, choices=TYPE_CHOICES, default='event')
-	status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
+	type = models.CharField(max_length=10, 
+							choices=TYPE_CHOICES, 
+							default='event',
+							verbose_name=u'Тип события')
+	status = models.CharField(max_length=10, 
+								choices=STATUS_CHOICES, 
+								default='draft',
+								verbose_name=u'Статус публикации')
 	
 class Meta:
 	ordering = ('-publish',)

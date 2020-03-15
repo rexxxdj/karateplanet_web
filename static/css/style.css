@@ -35,3 +35,22 @@
 .carousel-item{
   display: none;
 }
+
+.newslistbutton {
+  height: max-content;
+}
+
+.newslist{
+  display: inline-grid;
+}
+
+.newslistlink{
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+.newslistlink:hover{
+  text-decoration: none;
+  color: black;
+}

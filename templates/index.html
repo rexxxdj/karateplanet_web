@@ -9,24 +9,12 @@
         <title>Home - KaratePlanet</title>
         <link rel="icon" type="image/png" sizes="1994x2000" href="../static/img/karateplanet_dojo.png">
         <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arimo">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik+Mono+One">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ruslan+Display">
         <link rel="stylesheet" href="../static/fonts/font-awesome.min.css">
         <link rel="stylesheet" href="../static/fonts/ionicons.min.css">
         <link rel="stylesheet" href="../static/css/-Filterable-Gallery-with-Lightbox-BS4-.css">
-        <link rel="stylesheet" href="../static/css/-Login-form-Page-BS4-.css">
-        <link rel="stylesheet" href="../static/css/2-columns-media-image-video-carousel-map.css">
-        <link rel="stylesheet" href="../static/css/Article-Cards.css">
-        <link rel="stylesheet" href="../static/css/Article-Dual-Column.css">
         <link rel="stylesheet" href="../static/css/Article-List.css">
-        <link rel="stylesheet" href="../static/css/best-carousel-slide.css">
         <link rel="stylesheet" href="../static/css/Bold-BS4-Footer-Big-Logo.css">
-        <link rel="stylesheet" href="../static/css/Bootstrap-DataTables.css">
         <link rel="stylesheet" href="../static/css/Carousel-Hero-1.css">
         <link rel="stylesheet" href="../static/css/style.css">
     </head>
@@ -127,14 +115,15 @@
                 <!-- Start: Articles -->
                  <div class="row articles" style="font-family: Arimo, sans-serif;">
                     {% for article in articles %}                                            
-                    <div class="col-sm-6 col-md-4 item col-lg-4 col-md-6" style="padding-bottom: 15px;">
-                        <a href="{{ article.get_absolute_url }}">
+                    <div class="newslist col-sm-6 col-md-4 item col-lg-4 col-md-6">
+                        <a class="newslistlink" href="{{ article.get_absolute_url }}">
                             <img class="rounded img-fluid" src="{{ article.image_300_200.url }}">
+                        
+                        <h3 class="name" style="text-align: center;">{{ article.title }}</h3>
+                        <p class="description">{{ article.description|truncatechars_html:200 }} </p>
                         </a>
-                        <h3 class="name">{{ article.title }}</h3>
-                        <p class="description">{{ article.body|safe|truncatechars_html:200|linebreaks }} </p>
-                        <a href="{{ article.get_absolute_url }}" class="btn btn-block shadow-none gradient">Подробнее</a>
-                    </div>                    
+                        <!--<a href="{{ article.get_absolute_url }}" class="newslistbutton btn btn-block shadow-none gradient">Подробнее</a>-->
+                    </div>  
                     {% endfor %}
                 </div>
                 <!-- End: Articles -->
@@ -288,17 +277,6 @@
         <!-- End: Bold BS4 Footer Big Logo -->
         <script src="../static/js/jquery.min.js"></script>
         <script src="../static/js/bootstrap.min.js"></script>
-        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-        <script src="../static/js/-Filterable-Gallery-with-Lightbox-BS4-.js"></script>
-        <script src="../static/js/Bootstrap-DataTables.js"></script>
-        <script src="../static/js/2-columns-media-image-video-carousel-map.js"></script>
-        <script src="../static/js/Card-Carousel.js"></script>
-        <script src="../static/js/Contact-Form-v2-Modal--Full-with-Google-Map.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
-        <script src="../static/js/MUSA_carousel-extended.js"></script>
-        <script src="../static/js/Slider_Carousel_webalgustocom.js"></script>
         <script src="../static/js/theme.js"></script>
-        <script src="../static/js/WOWSlider-about-us.js"></script>
     </body>
 </html>
