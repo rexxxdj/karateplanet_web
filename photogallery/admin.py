@@ -6,6 +6,8 @@ import zipfile
 import karateplanet.settings
 from datetime import datetime
 from zipfile import ZipFile
+from django.utils.html import format_html
+
 
 from django.contrib import admin
 from django.core.files.base import ContentFile
@@ -19,8 +21,9 @@ from photogallery.forms import AlbumForm
 class AlbumModelAdmin(admin.ModelAdmin):
     form = AlbumForm
     prepopulated_fields = {'slug': ('title',)}
-    list_display = ('title', 'thumb')
+    list_display = ('title','created','is_visible',)
     list_filter = ('created',)
+    search_fields = ('title',)
 
     def save_model(self, request, obj, form, change):
         if form.is_valid():
@@ -49,7 +52,9 @@ class AlbumModelAdmin(admin.ModelAdmin):
                     with Image.open(filepath) as i:
                         img.width, img.height = i.size
 
-                    img.thumb.save('thumb-{0}'.format(filename), contentfile)
+                    img.image_300.save('image_300-{0}'.format(filename), contentfile)
+                    img.image_100.save('image_100-{0}'.format(filename), contentfile)
+
                     img.save()
                 zip.close() 
             super(AlbumModelAdmin, self).save_model(request, obj, form, change)
@@ -57,5 +62,15 @@ class AlbumModelAdmin(admin.ModelAdmin):
 # In case image should be removed from album.
 @admin.register(AlbumImage)
 class AlbumImageModelAdmin(admin.ModelAdmin):
-    list_display = ('alt', 'album')
+
+    def image_tag(self, obj):
+        return format_html('<img src="{}" />'.format(obj.image_100.url))
+
+    def album_title(self, obj):
+        return obj.album.title
+
+    image_tag.short_description = 'Фото'
+    album_title.short_description = 'Альбом'
+
+    list_display = ('image_tag', 'album_title')
     list_filter = ('album', 'created')
