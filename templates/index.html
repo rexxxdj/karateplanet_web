@@ -35,7 +35,7 @@
                     </a>
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link active" href="index.html">Главная</a>
+                            <a class="nav-link active" href="/">Главная</a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" href="gallery.html">Галерея</a>
@@ -122,45 +122,22 @@
                         <h3 class="name" style="text-align: center;">{{ article.title }}</h3>
                         <p class="description">{{ article.description|truncatechars_html:200 }} </p>
                         </a>
-                        <!--<a href="{{ article.get_absolute_url }}" class="newslistbutton btn btn-block shadow-none gradient">Подробнее</a>-->
                     </div>  
                     {% endfor %}
                 </div>
-                <!-- End: Articles -->
+                <!-- End: Articles -->                
             </div>
+            <hr>
             <section class="portfolio-block photography" style="padding: -2px;">
                 <div class="container">
                     <div class="row no-gutters" style="padding: 0px;">
+                        {% for photo in photos %}
                         <div class="col-md-6 col-lg-4 item zoom-on-hover" style="padding: 0px;">
                             <a href="#">
-                                <img class="img-fluid image" src="../static/img/nature/image5.jpg">
+                                <img class="img-fluid image" src="{{ photo.image.url }}">
                             </a>
                         </div>
-                        <div class="col-md-6 col-lg-4 item zoom-on-hover">
-                            <a href="#">
-                                <img class="img-fluid image" src="../static/img/nature/image2.jpg">
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-lg-4 item zoom-on-hover">
-                            <a href="#">
-                                <img class="img-fluid image" src="../static/img/nature/image2.jpg">
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-lg-4 item zoom-on-hover">
-                            <a href="#">
-                                <img class="img-fluid image" src="../static/img/nature/image2.jpg">
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-lg-4 item zoom-on-hover">
-                            <a href="#">
-                                <img class="img-fluid image" src="../static/img/tech/image4.jpg">
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-lg-4 item zoom-on-hover">
-                            <a href="#">
-                                <img class="img-fluid image" src="../static/img/tech/image4.jpg">
-                            </a>
-                        </div>
+                        {% endfor %}                        
                     </div>
                 </div>
             </section>
@@ -169,6 +146,7 @@
                     <button class="btn btn-block shadow-none gradient" type="button">Больше фото</button>
                 </div>
             </section>
+            <!--
             <section class="portfolio-block call-to-action border-bottom" style="padding: 10px;">
                 <div class="container">
                     <h2 class="text-center">Рейтинг бойцов</h2>
@@ -215,6 +193,7 @@
                     </div>
                 </div>
             </section>
+        -->
         </main>
         <!-- Start: Bold BS4 Footer Big Logo -->
         <footer id="myFooter" class="gradient" style="padding-top: 30px;">

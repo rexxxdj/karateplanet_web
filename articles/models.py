@@ -13,7 +13,10 @@ class Article(models.Model):
 	class Meta(object):
 		verbose_name = u"Статья"
 		verbose_name_plural = u"Статьи"
+		ordering = ('-publish',)
 
+	def __str__(self):
+		return self.title
 
 	def get_absolute_url(self):
 		return reverse('articles:article_detail',
@@ -53,7 +56,7 @@ class Article(models.Model):
 							unique_for_date='publish',
 							verbose_name=u'Ссылка')
 	author = models.ForeignKey(User,
-								on_delete=models.CASCADE, 
+								on_delete=models.SET_DEFAULT, 
 								related_name='posted',
 								default=1,
 								verbose_name=u'Автор')
@@ -88,8 +91,4 @@ class Article(models.Model):
 								default='draft',
 								verbose_name=u'Статус публикации')
 	
-class Meta:
-	ordering = ('-publish',)
-
-def __str__(self):
-	return self.title
+	

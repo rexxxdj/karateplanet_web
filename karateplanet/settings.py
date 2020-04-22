@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'imagekit',
     'ckeditor',
     'articles',
+    'photogallery',
+    'banners',
 ]
 
 MIDDLEWARE = [

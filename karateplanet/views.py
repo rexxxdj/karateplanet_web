@@ -1,13 +1,15 @@
 from django.shortcuts import render
 
 from articles.models import Article
+from photogallery.models import AlbumImage
 
 
 
 def index(request):
 	articles = Article.objects.filter(status='published').order_by('-publish')[:6] #.filter(status__exact='publish')
+	photos = AlbumImage.objects.order_by('-created')[:6]
 
 	return render(request,
 				'index.html',
-				context={'articles': articles},
+				context={'articles': articles, 'photos': photos},
 				)
