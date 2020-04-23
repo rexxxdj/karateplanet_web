@@ -54,3 +54,8 @@
   text-decoration: none;
   color: black;
 }
+
+.portfolio-block{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}

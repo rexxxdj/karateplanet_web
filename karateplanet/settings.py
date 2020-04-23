@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'articles',
     'photogallery',
     'banners',
+    'videogallery',
 ]
 
 MIDDLEWARE = [

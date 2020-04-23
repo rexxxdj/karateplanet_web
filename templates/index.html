@@ -134,9 +134,30 @@
                     </div>
                 </div>
             </section>
+            <section class="portfolio-block portfolio-block-video" style="padding: -2px;">
+                <div class="container">
+                    <div class="row no-gutters" style="padding: 0px;">
+                        {% for video in videos %}
+                        <div class="col-md-6 item" style="padding: 0px;">
+                            <object style="width: 540px, height=390px;">
+                                <param name="movie" value="{{ video.video_normalize_url }}">
+                                <param name="allowFullScreen" value="true">
+                                <param name="allowScriptAccess" value="always">
+                                <embed src="{{ video.video_normalize_url }}" 
+                                        type="application/x-shockwave-flash" 
+                                        allowfullscreen="true" 
+                                        allowScriptAccess="always" 
+                                        width="540"
+                                        height="390">
+                            </object>
+                        </div>                        
+                        {% endfor %}                        
+                    </div>
+                </div>
+            </section>
             <section class="portfolio-block call-to-action border-bottom" style="padding: 10px;">
                 <div class="container">
-                    <button class="btn btn-block shadow-none gradient" type="button">Больше фото</button>
+                    <button class="btn btn-block shadow-none gradient" type="button">В галерею</button>
                 </div>
             </section>
             <!--
