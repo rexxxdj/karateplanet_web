@@ -74,18 +74,11 @@
         <main class="page lanidng-page">
             <div class="carousel slide" data-ride="carousel" id="carousel-1">
                 <div class="carousel-inner" role="listbox" style="height: 500px;">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="../static/img/loft.jpg" alt="First slide">
+                    {% for item in carousel %}
+                    <div class="carousel-item {% if item.is_active %} active {% endif %}">
+                        <img class="d-block w-100" src="{{ item.image.url }}" alt="NAME">
                     </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="../static/img/building.jpg" alt="Second slide">
-                    </div>
-                    <div class="carousel-item">                        
-                        <img class="d-block w-100" src="../static/img/desk.jpg" alt="Third slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="../static/img/building.jpg" alt="Second slide">
-                    </div>
+                    {% endfor %}
                 </div>
                 <div>
                     <a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev">
